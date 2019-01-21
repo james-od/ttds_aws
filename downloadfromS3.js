@@ -15,11 +15,12 @@ var s3 = new AWS.S3(
 s3.getObject(
   { Bucket: "test-bucket-ttdsgroup", Key: "testfile.txt" },
   function (error, data) {
+    var decoded = "waiting..."
     if (error != null) {
       alert("Failed to retrieve object: " + error);
     } else {
-      var decoded = new TextDecoder("utf-8").decode(data.Body);
-      console.log(decoded)
+      decoded = new TextDecoder("utf-8").decode(data.Body);
+      window.alert(decoded)
     }
   }
 );
